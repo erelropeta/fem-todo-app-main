@@ -31,4 +31,25 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
   font-weight: 400;
+  background: var(--clr-dt-dark-blue-500)
+    url('./assets/images/bg-mobile-dark.jpg') no-repeat;
+  transition: all 500ms ease;
+}
+
+.theme--light {
+  background-color: var(--clr-lt-gray-100);
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: 86.5vw;
+  margin-inline: auto;
+}
+
+.box {
+  height: 1rem;
+  background-color: coral;
 }

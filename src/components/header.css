@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-block: 3rem;
+}
+
+.header__title {
+  font-size: 1.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.625rem;
+}
+
+.header__theme-btn {
+  width: 1.25rem;
+}
+
+.theme-btn__icon {
+  width: 1.2rem;
+  aspect-ratio: 1 / 1;
+  transition: all 250ms ease-in-out;
+}
