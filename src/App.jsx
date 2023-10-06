@@ -40,6 +40,7 @@ function App() {
     },
   ]);
   const [newTodo, setNewTodo] = useState('');
+  const [activeCount, setActiveCount] = useState(todoList.length);
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
@@ -55,20 +56,27 @@ function App() {
     }
   };
 
+  const countActive = (list) => {
+    const activeTodoList = list.filter((todo) => !todo.isComplete);
+
+    return activeTodoList.length;
+  };
+
   const addTodo = (e) => {
     e.preventDefault();
 
     const newTodoId = todoList.length + 1;
-
-    setToDoList([
+    const updatedTodoList = [
       ...todoList,
       {
         id: newTodoId,
         todo: newTodo,
         isComplete: false,
       },
-    ]);
+    ];
 
+    setToDoList(updatedTodoList);
+    setActiveCount(countActive(updatedTodoList));
     setNewTodo('');
   };
 
@@ -81,6 +89,7 @@ function App() {
     });
 
     setToDoList(updatedTodoList);
+    setActiveCount(countActive(updatedTodoList));
   };
 
   const handleStatusChange = (id) => {
@@ -101,6 +110,10 @@ function App() {
   }, [darkTheme]);
 
   useEffect(() => {
+    setActiveCount(countActive(todoList));
+  }, []);
+
+  useEffect(() => {
     console.log(todoList);
   }, [todoList]);
 
@@ -117,6 +130,7 @@ function App() {
           todoList={todoList}
           handleStatusChange={handleStatusChange}
           deleteTodo={deleteTodo}
+          activeCount={activeCount}
         />
       </main>
     </div>

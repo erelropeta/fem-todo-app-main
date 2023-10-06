@@ -1,5 +1,24 @@
-.todo__list {
-  list-style-type: none;
+.c-todo__list {
   background-color: var(--clr-dt-dark-blue-400);
   border-radius: 0.25rem;
+}
+
+.todo__list {
+  list-style-type: none;
+}
+
+.c-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--clr-dt-grayish-blue-600);
+  padding: 1rem;
+}
+
+.summary__clear-btn {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  border-color: transparent;
 }
