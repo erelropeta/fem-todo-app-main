@@ -76,7 +76,6 @@ function App() {
     ];
 
     setToDoList(updatedTodoList);
-    setActiveCount(countActive(updatedTodoList));
     setNewTodo('');
   };
 
@@ -89,7 +88,6 @@ function App() {
     });
 
     setToDoList(updatedTodoList);
-    setActiveCount(countActive(updatedTodoList));
   };
 
   const handleStatusChange = (id) => {
@@ -111,9 +109,6 @@ function App() {
 
   useEffect(() => {
     setActiveCount(countActive(todoList));
-  }, []);
-
-  useEffect(() => {
     console.log(todoList);
   }, [todoList]);
 
