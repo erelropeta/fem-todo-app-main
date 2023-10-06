@@ -98,6 +98,12 @@ function App() {
     setToDoList(updatedTodoList);
   };
 
+  const handleClearCompleted = () => {
+    const activeTodoList = todoList.filter((todo) => !todo.isComplete);
+
+    setToDoList(activeTodoList);
+  };
+
   useEffect(() => {
     let bodyClassName = 'theme--dark';
 
@@ -126,6 +132,7 @@ function App() {
           handleStatusChange={handleStatusChange}
           deleteTodo={deleteTodo}
           activeCount={activeCount}
+          handleClearCompleted={handleClearCompleted}
         />
       </main>
     </div>
