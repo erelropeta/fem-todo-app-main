@@ -1,0 +1,54 @@
+.todo__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--clr-dt-grayish-blue-800);
+  padding: 1rem;
+}
+
+.todo__checkbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.todo__checkbox--visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--clr-dt-grayish-blue-800);
+  border-radius: 50%;
+}
+
+.todo__checkbox:checked + .todo__label > .todo__checkbox--visible {
+  background-image: var(--clr-check-bg);
+}
+
+.todo__checkbox:checked ~ .todo__label {
+  color: var(--clr-dt-grayish-blue-800);
+  text-decoration: line-through;
+}
+
+.todo__label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--clr-dt-grayish-blue-200);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.todo__delete-btn {
+  justify-self: flex-end;
+  width: 0.75rem;
+  height: 0.75rem;
+  visibility: hidden;
+}
+
+.todo__item:hover > .todo__delete-btn {
+  visibility: visible;
+}

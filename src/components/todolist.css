@@ -1,0 +1,5 @@
+.todo__list {
+  list-style-type: none;
+  background-color: var(--clr-dt-dark-blue-400);
+  border-radius: 0.25rem;
+}

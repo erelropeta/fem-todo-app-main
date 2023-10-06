@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import NewTodoForm from './components/NewTodoForm';
+import TodoList from './components/TodoList';
 
 function App() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -10,32 +11,32 @@ function App() {
     {
       id: 1,
       todo: 'Complete online Javascript course',
-      status: 'complete',
+      isComplete: true,
     },
     {
       id: 2,
       todo: 'Jog around the park 3x',
-      status: 'active',
+      isComplete: false,
     },
     {
       id: 3,
       todo: '10 minutes meditation',
-      status: 'active',
+      isComplete: false,
     },
     {
       id: 4,
       todo: 'Read for 1 hour',
-      status: 'active',
+      isComplete: false,
     },
     {
       id: 5,
       todo: 'Pick up groceries',
-      status: 'active',
+      isComplete: false,
     },
     {
       id: 6,
       todo: 'Complete Todo App on Frontend Mentor',
-      status: 'active',
+      isComplete: false,
     },
   ]);
 
@@ -71,6 +72,14 @@ function App() {
     e.target.querySelector('#newTodoInput').value = '';
   };
 
+  const handleStatusChange = (id) => {
+    const updatedTodoList = todoList.map((todo) =>
+      id == todo.id ? { ...todo, isComplete: !todo.isComplete } : todo
+    );
+
+    setToDoList(updatedTodoList);
+  };
+
   useEffect(() => {
     let bodyClassName = 'theme--dark';
 
@@ -89,6 +98,7 @@ function App() {
       <Header darkTheme={darkTheme} handleToggleTheme={handleToggleTheme} />
       <main className="main">
         <NewTodoForm addTodo={addTodo} />
+        <TodoList todoList={todoList} handleStatusChange={handleStatusChange} />
       </main>
     </div>
   );
