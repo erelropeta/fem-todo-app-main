@@ -30,12 +30,13 @@
   --clr-dt-grayish-blue-800: hsl(237, 14%, 26%);
   --clr-dt-text: var(-clr-dt-grayish-blue-600);
   color-scheme: light dark;
+  font-size: 18px;
 }
 
 body {
   color: var(--clr-dt-text);
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 18px;
+  font-size: 0.7rem;
   font-weight: 400;
   background: var(--clr-dt-dark-blue-500)
     url('./assets/images/bg-mobile-dark.jpg') no-repeat;
