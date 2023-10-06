@@ -72,6 +72,17 @@ function App() {
     e.target.querySelector('#newTodoInput').value = '';
   };
 
+  const deleteTodo = (id) => {
+    const filteredTodoList = todoList.filter((todo) => id !== todo.id);
+    const updatedTodoList = filteredTodoList.map((todo, index) => {
+      index++;
+
+      return { ...todo, id: index };
+    });
+
+    setToDoList(updatedTodoList);
+  };
+
   const handleStatusChange = (id) => {
     const updatedTodoList = todoList.map((todo) =>
       id == todo.id ? { ...todo, isComplete: !todo.isComplete } : todo
@@ -98,7 +109,11 @@ function App() {
       <Header darkTheme={darkTheme} handleToggleTheme={handleToggleTheme} />
       <main className="main">
         <NewTodoForm addTodo={addTodo} />
-        <TodoList todoList={todoList} handleStatusChange={handleStatusChange} />
+        <TodoList
+          todoList={todoList}
+          handleStatusChange={handleStatusChange}
+          deleteTodo={deleteTodo}
+        />
       </main>
     </div>
   );

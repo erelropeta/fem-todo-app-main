@@ -2,7 +2,7 @@ import './todoitem.css';
 import CheckIcon from '../assets/images/icon-check.svg';
 import CrossIcon from '../assets/images/icon-cross.svg';
 
-const TodoItem = ({ id, todo, isComplete, handleStatusChange }) => {
+const TodoItem = ({ id, todo, isComplete, handleStatusChange, deleteTodo }) => {
   return (
     <li className="todo__item">
       <input
@@ -24,6 +24,7 @@ const TodoItem = ({ id, todo, isComplete, handleStatusChange }) => {
         type="image"
         src={CrossIcon}
         alt="Delete"
+        onClick={() => deleteTodo(id)}
       />
     </li>
   );

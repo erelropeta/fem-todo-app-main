@@ -1,7 +1,7 @@
 import TodoItem from './TodoItem';
 import './todolist.css';
 
-const TodoList = ({ todoList, handleStatusChange }) => {
+const TodoList = ({ todoList, handleStatusChange, deleteTodo }) => {
   return (
     <ul className="todo__list">
       {todoList.map((todo) => {
@@ -10,6 +10,7 @@ const TodoList = ({ todoList, handleStatusChange }) => {
             key={todo.id}
             {...todo}
             handleStatusChange={handleStatusChange}
+            deleteTodo={deleteTodo}
           />
         );
       })}
