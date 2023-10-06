@@ -39,6 +39,7 @@ function App() {
       isComplete: false,
     },
   ]);
+  const [newTodo, setNewTodo] = useState('');
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
@@ -57,7 +58,6 @@ function App() {
   const addTodo = (e) => {
     e.preventDefault();
 
-    let newTodo = e.target.querySelector('#newTodoInput').value;
     const newTodoId = todoList.length + 1;
 
     setToDoList([
@@ -65,11 +65,11 @@ function App() {
       {
         id: newTodoId,
         todo: newTodo,
-        status: 'active',
+        isComplete: false,
       },
     ]);
 
-    e.target.querySelector('#newTodoInput').value = '';
+    setNewTodo('');
   };
 
   const deleteTodo = (id) => {
@@ -108,7 +108,11 @@ function App() {
     <div className="app">
       <Header darkTheme={darkTheme} handleToggleTheme={handleToggleTheme} />
       <main className="main">
-        <NewTodoForm addTodo={addTodo} />
+        <NewTodoForm
+          addTodo={addTodo}
+          newTodo={newTodo}
+          setNewTodo={setNewTodo}
+        />
         <TodoList
           todoList={todoList}
           handleStatusChange={handleStatusChange}
