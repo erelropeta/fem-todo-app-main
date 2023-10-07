@@ -2,7 +2,7 @@ import TodoItem from './TodoItem';
 import './todolist.css';
 
 const TodoList = ({
-  todoList,
+  filteredTodos,
   handleStatusChange,
   deleteTodo,
   activeCount,
@@ -11,7 +11,7 @@ const TodoList = ({
   return (
     <section className="c-todo__list">
       <ul className="todo__list">
-        {todoList.map((todo) => {
+        {filteredTodos.map((todo) => {
           return (
             <TodoItem
               key={todo.id}

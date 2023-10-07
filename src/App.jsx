@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
+import TodoFilter from './components/TodoFilter';
 
 function App() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -39,8 +40,10 @@ function App() {
       isComplete: false,
     },
   ]);
+  const [filteredTodos, setFilteredTodos] = useState(todoList);
   const [newTodo, setNewTodo] = useState('');
   const [activeCount, setActiveCount] = useState(todoList.length);
+  const [filterBy, setFilterBy] = useState('all');
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
@@ -114,9 +117,19 @@ function App() {
   }, [darkTheme]);
 
   useEffect(() => {
+    let filteredTodoList = todoList;
+
+    if (filterBy == 'active') {
+      filteredTodoList = todoList.filter((todo) => !todo.isComplete);
+    }
+
+    if (filterBy == 'completed') {
+      filteredTodoList = todoList.filter((todo) => todo.isComplete);
+    }
+
     setActiveCount(countActive(todoList));
-    console.log(todoList);
-  }, [todoList]);
+    setFilteredTodos(filteredTodoList);
+  }, [todoList, filterBy]);
 
   return (
     <div className="app">
@@ -128,12 +141,14 @@ function App() {
           setNewTodo={setNewTodo}
         />
         <TodoList
-          todoList={todoList}
+          filteredTodos={filteredTodos}
           handleStatusChange={handleStatusChange}
           deleteTodo={deleteTodo}
           activeCount={activeCount}
           handleClearCompleted={handleClearCompleted}
+          filterBy={filterBy}
         />
+        <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       </main>
     </div>
   );

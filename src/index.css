@@ -28,7 +28,10 @@
   --clr-dt-grayish-blue-400: hsl(234, 11%, 52%);
   --clr-dt-grayish-blue-600: hsl(233, 14%, 35%);
   --clr-dt-grayish-blue-800: hsl(237, 14%, 26%);
-  --clr-dt-text: var(-clr-dt-grayish-blue-600);
+  --clr-dt-surface: var(--clr-dt-dark-blue-400);
+  --clr-dt-text: var(--clr-dt-grayish-blue-100);
+  --clr-dt-text-muted: var(--clr-dt-grayish-blue-600);
+  --br-sm: 0.25rem;
   color-scheme: light dark;
   font-size: 18px;
 }

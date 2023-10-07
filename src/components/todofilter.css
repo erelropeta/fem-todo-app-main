@@ -1,0 +1,7 @@
+.todo-filter {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--clr-dt-surface);
+  border-radius: var(--br-sm);
+  padding-inline: 4.25rem;
+}
