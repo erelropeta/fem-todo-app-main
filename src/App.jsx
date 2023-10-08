@@ -78,6 +78,8 @@ function App() {
       },
     ];
 
+    localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
+
     setToDoList(updatedTodoList);
     setNewTodo('');
   };
@@ -90,6 +92,8 @@ function App() {
       return { ...todo, id: index };
     });
 
+    localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
+
     setToDoList(updatedTodoList);
   };
 
@@ -98,14 +102,28 @@ function App() {
       id == todo.id ? { ...todo, isComplete: !todo.isComplete } : todo
     );
 
+    localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
+
     setToDoList(updatedTodoList);
   };
 
   const handleClearCompleted = () => {
     const activeTodoList = todoList.filter((todo) => !todo.isComplete);
 
+    localStorage.setItem('todolist', JSON.stringify(activeTodoList));
+
     setToDoList(activeTodoList);
   };
+
+  useEffect(() => {
+    const localTodoList = localStorage.getItem('todolist');
+
+    if (localTodoList) {
+      setToDoList(JSON.parse(localTodoList));
+    } else {
+      localStorage.setItem('todolist', JSON.stringify(todoList));
+    }
+  }, []);
 
   useEffect(() => {
     let bodyClassName = 'theme--dark';
