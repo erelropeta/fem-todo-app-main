@@ -37,7 +37,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--clr-dt-grayish-blue-200);
   font-size: 0.7rem;
   cursor: pointer;
 }
@@ -51,4 +50,16 @@
 
 .todo__item:hover > .todo__delete-btn {
   visibility: visible;
+}
+
+.theme--light .todo__item {
+  border-color: var(--clr-lt-text-muted);
+}
+
+.theme--light .todo__checkbox--visible {
+  border-color: var(--clr-lt-text-muted);
+}
+
+.theme--light .todo__checkbox:checked ~ .todo__label {
+  color: var(--clr-lt-text-muted);
 }

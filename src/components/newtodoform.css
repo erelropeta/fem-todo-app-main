@@ -36,3 +36,11 @@
 .newtodo__input:focus {
   outline: none;
 }
+
+.theme--light .newtodo__label {
+  background-color: var(--clr-lt-surface);
+}
+
+.theme--light .newtodo__label::before {
+  border-color: var(--clr-lt-text-muted);
+}

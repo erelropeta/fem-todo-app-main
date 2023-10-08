@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--clr-dt-grayish-blue-600);
+  color: var(--clr-dt-text-muted);
   padding: 1rem;
 }
 
@@ -22,4 +22,12 @@
   font-size: inherit;
   background-color: transparent;
   border-color: transparent;
+}
+
+.theme--light .c-todo__list {
+  background-color: var(--clr-lt-surface);
+}
+
+.theme--light .c-summary {
+  color: var(--clr-lt-text-muted);
 }

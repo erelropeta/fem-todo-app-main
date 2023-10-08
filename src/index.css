@@ -28,6 +28,10 @@
   --clr-dt-grayish-blue-400: hsl(234, 11%, 52%);
   --clr-dt-grayish-blue-600: hsl(233, 14%, 35%);
   --clr-dt-grayish-blue-800: hsl(237, 14%, 26%);
+  --clr-lt-bg: var(--clr-lt-gray-100);
+  --clr-lt-surface: #fff;
+  --clr-lt-text: var(--clr-lt-grayish-blue-800);
+  --clr-lt-text-muted: var(--clr-lt-grayish-blue-400);
   --clr-dt-surface: var(--clr-dt-dark-blue-400);
   --clr-dt-text: var(--clr-dt-grayish-blue-100);
   --clr-dt-text-muted: var(--clr-dt-grayish-blue-600);
@@ -46,10 +50,6 @@ body {
   transition: all 500ms ease;
 }
 
-.theme--light {
-  background-color: var(--clr-lt-gray-100);
-}
-
 button {
   cursor: pointer;
 }
@@ -62,4 +62,10 @@ button {
 .box {
   height: 1rem;
   background-color: coral;
+}
+
+.theme--light {
+  color: var(--clr-lt-text);
+  background: var(--clr-lt-bg) url('./assets/images/bg-mobile-light.jpg')
+    no-repeat;
 }

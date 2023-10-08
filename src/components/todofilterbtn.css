@@ -8,6 +8,10 @@
   border-color: transparent;
 }
 
+.theme--light .todo-filter__btn {
+  color: var(--clr-lt-text-muted);
+}
+
 .todo-filter__btn.todo-filter__btn--active {
   color: var(--clr-bright-blue);
 }
