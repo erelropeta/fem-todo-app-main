@@ -43,7 +43,7 @@
 body {
   color: var(--clr-dt-text);
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 400;
   background: var(--clr-dt-dark-blue-500)
     url('./assets/images/bg-mobile-dark.jpg') no-repeat;
