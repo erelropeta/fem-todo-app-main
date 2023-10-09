@@ -2,17 +2,18 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-block: 3rem 2rem;
+  margin-block: 2.75rem 1.8rem;
 }
 
 .header__title {
-  font-size: 1.65rem;
+  color: var(--clr-dt-grayish-blue-100);
+  font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 0.625rem;
 }
 
 .header__theme-btn {
-  width: 1.25rem;
+  width: 1.1rem;
 }
 
 .theme-btn__icon {
