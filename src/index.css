@@ -69,3 +69,13 @@ button {
   background: var(--clr-lt-bg) url('./assets/images/bg-mobile-light.jpg')
     no-repeat;
 }
+
+@media screen and (min-width: 376px) {
+  body {
+    background-image: url('./assets/images/bg-desktop-dark.jpg');
+  }
+
+  .theme--light {
+    background-image: url('./assets/images/bg-desktop-light.jpg');
+  }
+}
