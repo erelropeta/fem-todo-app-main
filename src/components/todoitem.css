@@ -24,6 +24,17 @@
   border-radius: 50%;
 }
 
+.todo__check-icon {
+  display: none;
+}
+
+.todo__checkbox:checked
+  + .todo__label
+  > .todo__checkbox--visible
+  > .todo__check-icon {
+  display: block;
+}
+
 .todo__checkbox:checked + .todo__label > .todo__checkbox--visible {
   background-image: var(--clr-check-bg);
 }

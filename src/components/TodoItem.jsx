@@ -30,7 +30,7 @@ const TodoItem = ({
           />
           <label className="todo__label" htmlFor={id}>
             <span className="todo__checkbox--visible">
-              <img src={CheckIcon} alt="" />
+              <img className="todo__check-icon" src={CheckIcon} alt="" />
             </span>
             {todo}
           </label>
