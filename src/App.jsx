@@ -10,32 +10,32 @@ function App() {
   const [darkTheme, setDarkTheme] = useState(prefersDark);
   const [todoList, setToDoList] = useState([
     {
-      id: 1,
+      id: '1',
       todo: 'Complete online Javascript course',
       isComplete: true,
     },
     {
-      id: 2,
+      id: '2',
       todo: 'Jog around the park 3x',
       isComplete: false,
     },
     {
-      id: 3,
+      id: '3',
       todo: '10 minutes meditation',
       isComplete: false,
     },
     {
-      id: 4,
+      id: '4',
       todo: 'Read for 1 hour',
       isComplete: false,
     },
     {
-      id: 5,
+      id: '5',
       todo: 'Pick up groceries',
       isComplete: false,
     },
     {
-      id: 6,
+      id: '6',
       todo: 'Complete Todo App on Frontend Mentor',
       isComplete: false,
     },
@@ -44,6 +44,8 @@ function App() {
   const [newTodo, setNewTodo] = useState('');
   const [activeCount, setActiveCount] = useState(todoList.length);
   const [filterBy, setFilterBy] = useState('all');
+  const [dragItemId, setDragItemId] = useState('');
+  const [nextSiblingId, setNextSiblingId] = useState('');
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
@@ -115,6 +117,29 @@ function App() {
     setToDoList(activeTodoList);
   };
 
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
+  const handleDragEnd = ({ destination, source }) => {
+    if (!destination) return;
+
+    const reorderedTodoList = reorder(
+      todoList,
+      source.index,
+      destination.index
+    );
+
+    localStorage.setItem('todolist', JSON.stringify(reorderedTodoList));
+
+    setToDoList(reorderedTodoList);
+  };
+
   useEffect(() => {
     const localTodoList = localStorage.getItem('todolist');
 
@@ -147,7 +172,7 @@ function App() {
 
     setActiveCount(countActive(todoList));
     setFilteredTodos(filteredTodoList);
-  }, [todoList, filterBy]);
+  }, [todoList, filterBy, dragItemId]);
 
   return (
     <div className="app">
@@ -165,6 +190,7 @@ function App() {
           activeCount={activeCount}
           handleClearCompleted={handleClearCompleted}
           filterBy={filterBy}
+          handleDragEnd={handleDragEnd}
         />
         <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       </main>
