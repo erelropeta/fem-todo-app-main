@@ -193,6 +193,7 @@ function App() {
           handleDragEnd={handleDragEnd}
         />
         <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+        <p className="note">Drag and drop to reorder list</p>
       </main>
     </div>
   );

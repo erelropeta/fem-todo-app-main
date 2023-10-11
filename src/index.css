@@ -55,8 +55,12 @@ button {
 }
 
 .app {
-  width: 86.5vw;
+  width: 87vw;
   margin-inline: auto;
+}
+
+.main {
+  margin-bottom: 3rem;
 }
 
 .box {
@@ -68,6 +72,12 @@ button {
   color: var(--clr-lt-text);
   background: var(--clr-lt-bg) url('./assets/images/bg-mobile-light.jpg')
     no-repeat;
+}
+
+.note {
+  color: var(--clr-dt-text-muted);
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 @media screen and (min-width: 376px) {

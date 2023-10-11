@@ -4,6 +4,7 @@
   background-color: var(--clr-dt-surface);
   border-radius: var(--br-sm);
   padding: 1rem 4.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .theme--light .todo-filter {
