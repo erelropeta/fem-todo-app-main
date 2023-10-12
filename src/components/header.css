@@ -1,19 +1,20 @@
 .header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  margin-block: 2.75rem 1.8rem;
+  margin-block: clamp(2.75rem, 2.099rem + 3.127vw, 4.6rem)
+    clamp(1.8rem, 1.659rem + 0.676vw, 2.2rem);
 }
 
 .header__title {
   color: var(--clr-dt-grayish-blue-100);
-  font-size: 1.4rem;
+  font-size: clamp(1.675rem, 1.385rem + 1.394vw, 2.5rem);
   text-transform: uppercase;
-  letter-spacing: 0.625rem;
+  letter-spacing: clamp(0.625rem, 0.528rem + 0.465vw, 0.9rem);
 }
 
 .header__theme-btn {
-  width: 1.1rem;
+  width: clamp(1.1rem, 0.924rem + 0.845vw, 1.6rem);
 }
 
 .theme-btn__icon {
