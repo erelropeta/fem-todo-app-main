@@ -2,13 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-block: clamp(2.75rem, 2.099rem + 3.127vw, 4.6rem)
-    clamp(1.8rem, 1.659rem + 0.676vw, 2.2rem);
+  margin-block: 3rem 2.1rem;
 }
 
 .header__title {
   color: var(--clr-dt-grayish-blue-100);
-  font-size: clamp(1.675rem, 1.385rem + 1.394vw, 2.5rem);
+  font-size: 1.665rem;
   text-transform: uppercase;
   letter-spacing: clamp(0.625rem, 0.528rem + 0.465vw, 0.9rem);
 }
@@ -25,4 +24,17 @@
 
 .theme--light .header__title {
   color: var(--clr-lt-gray-100);
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    margin-block: clamp(3rem, 2.437rem + 2.704vw, 4.6rem)
+      clamp(2.1rem, 2.065rem + 0.169vw, 2.2rem);
+    /* margin-block: 3rem 4.6rem; */
+    /* margin-block: 4.6rem 2.25rem; */
+  }
+
+  .header__title {
+    font-size: clamp(1.665rem, 1.371rem + 1.411vw, 2.5rem);
+  }
 }
