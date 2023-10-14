@@ -37,13 +37,12 @@
   --clr-dt-text-muted: var(--clr-dt-grayish-blue-600);
   --br-sm: 0.25rem;
   color-scheme: light dark;
-  font-size: 18px;
 }
 
 body {
   color: var(--clr-dt-text);
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.65rem;
+  font-size: 18px;
   font-weight: 400;
   background: var(--clr-dt-dark-blue-500)
     url('./assets/images/bg-mobile-dark.jpg') no-repeat;
@@ -56,6 +55,8 @@ button {
 
 .app {
   width: 87vw;
+  min-width: 326.25px;
+  max-width: 33.7rem;
   margin-inline: auto;
 }
 
