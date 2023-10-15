@@ -3,24 +3,20 @@
 }
 
 .newtodo__label {
-  position: relative;
   display: flex;
+  font-size: 0.75rem;
   background-color: var(--clr-dt-dark-blue-400);
   border-radius: 0.25rem;
-  padding: 1rem;
-  padding-left: 2.75rem;
+  padding: 0.83rem 1.25rem;
 }
 
 .newtodo__label::before {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
   content: '';
-  width: 1.1rem;
+  width: 1.4rem;
   aspect-ratio: 1 / 1;
   border: 1px solid var(--clr-dt-grayish-blue-800);
   border-radius: 50%;
-  transform: translateY(-50%);
+  margin-right: 0.73rem;
 }
 
 .newtodo__input {
@@ -47,4 +43,21 @@
 
 .theme--light .newtodo__label::before {
   border-color: var(--clr-lt-text-muted);
+}
+
+@media only screen and (min-width: 768px) {
+  .newtodo__form {
+    margin-bottom: clamp(1rem, 0.824rem + 0.845vw, 1.5rem);
+  }
+
+  .newtodo__label {
+    font-size: clamp(0.75rem, 0.592rem + 0.761vw, 1.2rem);
+    padding: clamp(0.83rem, 0.665rem + 0.794vw, 1.3rem)
+      clamp(1.25rem, 1.171rem + 0.38vw, 1.475rem);
+  }
+
+  .newtodo__label::before {
+    width: clamp(1.4rem, 1.312rem + 0.423vw, 1.65rem);
+    margin-right: clamp(0.73rem, 0.468rem + 1.259vw, 1.475rem);
+  }
 }
