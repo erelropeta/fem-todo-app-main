@@ -54,9 +54,9 @@ button {
 }
 
 .app {
-  width: 87vw;
+  width: 87.2vw;
   min-width: 326.25px;
-  max-width: 33.7rem;
+  max-width: 33.75rem;
   margin-inline: auto;
 }
 
