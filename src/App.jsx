@@ -72,7 +72,7 @@ function App() {
     const updatedTodoList = [
       ...todoList,
       {
-        id: newTodoId,
+        id: newTodoId.toString(),
         todo: newTodo,
         isComplete: false,
       },
