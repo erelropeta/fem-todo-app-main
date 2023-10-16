@@ -44,8 +44,6 @@ function App() {
   const [newTodo, setNewTodo] = useState('');
   const [activeCount, setActiveCount] = useState(todoList.length);
   const [filterBy, setFilterBy] = useState('all');
-  const [dragItemId, setDragItemId] = useState('');
-  const [nextSiblingId, setNextSiblingId] = useState('');
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
@@ -172,7 +170,7 @@ function App() {
 
     setActiveCount(countActive(todoList));
     setFilteredTodos(filteredTodoList);
-  }, [todoList, filterBy, dragItemId]);
+  }, [todoList, filterBy]);
 
   return (
     <div className="app">
