@@ -1,5 +1,6 @@
 import './todolist.css';
 import TodoItem from './TodoItem';
+import TodoFilter from './TodoFilter';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const TodoList = ({
@@ -8,7 +9,10 @@ const TodoList = ({
   deleteTodo,
   activeCount,
   handleClearCompleted,
+  filterBy,
+  setFilterBy,
   handleDragEnd,
+  windowWidth,
 }) => {
   return (
     <section className="c-todo__list">
@@ -38,6 +42,9 @@ const TodoList = ({
       </DragDropContext>
       <div className="c-summary">
         <p className="summary">{activeCount} items left</p>
+        {windowWidth >= 768 && (
+          <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+        )}
         <button className="summary__clear-btn" onClick={handleClearCompleted}>
           Clear Completed
         </button>

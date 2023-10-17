@@ -44,6 +44,7 @@ function App() {
   const [newTodo, setNewTodo] = useState('');
   const [activeCount, setActiveCount] = useState(todoList.length);
   const [filterBy, setFilterBy] = useState('all');
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
@@ -146,6 +147,16 @@ function App() {
     } else {
       localStorage.setItem('todolist', JSON.stringify(todoList));
     }
+
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -188,9 +199,13 @@ function App() {
           activeCount={activeCount}
           handleClearCompleted={handleClearCompleted}
           filterBy={filterBy}
+          setFilterBy={setFilterBy}
           handleDragEnd={handleDragEnd}
+          windowWidth={windowWidth}
         />
-        <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+        {windowWidth < 768 && (
+          <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+        )}
         <p className="note">Drag and drop to reorder list</p>
       </main>
     </div>
