@@ -56,11 +56,6 @@
   justify-self: flex-end;
   width: 0.75rem;
   height: 0.75rem;
-  visibility: hidden;
-}
-
-.todo__item:hover > .todo__delete-btn {
-  visibility: visible;
 }
 
 .theme--light .todo__item {
@@ -79,6 +74,14 @@
   .todo__item {
     padding: clamp(1rem, 0.921rem + 0.38vw, 1.225rem)
       clamp(1.25rem, 1.173rem + 0.372vw, 1.47rem);
+  }
+
+  .todo__delete-btn {
+    visibility: hidden;
+  }
+
+  .todo__item:hover > .todo__delete-btn {
+    visibility: visible;
   }
 
   .todo__checkbox--visible {
