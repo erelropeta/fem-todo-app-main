@@ -1,7 +1,7 @@
 .todo-filter__btn {
   color: var(--clr-dt-text-muted);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: capitalize;
   background-color: transparent;
@@ -14,4 +14,10 @@
 
 .todo-filter__btn.todo-filter__btn--active {
   color: var(--clr-bright-blue);
+}
+
+@media only screen and (min-width: 768px) {
+  .todo-filter__btn {
+    font-size: inherit;
+  }
 }

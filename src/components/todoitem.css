@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
   gap: 0.77rem;
-  font-size: 0.7rem;
+  font-size: 0.725rem;
   cursor: pointer;
 }
 
@@ -77,15 +77,16 @@
 
 @media only screen and (min-width: 768px) {
   .todo__item {
-    padding: 1.225rem 1.47rem;
+    padding: clamp(1rem, 0.921rem + 0.38vw, 1.225rem)
+      clamp(1.25rem, 1.173rem + 0.372vw, 1.47rem);
   }
 
   .todo__checkbox--visible {
-    width: 1.5rem;
+    width: clamp(1.25rem, 1.162rem + 0.423vw, 1.5rem);
   }
 
   .todo__label {
-    gap: 1.5rem;
-    font-size: 1.1rem;
+    gap: clamp(0.77rem, 0.513rem + 1.234vw, 1.5rem);
+    font-size: clamp(0.725rem, 0.593rem + 0.634vw, 1.1rem);
   }
 }

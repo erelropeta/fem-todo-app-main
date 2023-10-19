@@ -13,7 +13,9 @@
   align-items: center;
   justify-content: space-between;
   color: var(--clr-dt-text-muted);
-  padding: 1rem;
+  font-size: 0.725rem;
+  padding-block: 1.15rem 1.225rem;
+  padding-inline: 1.25rem;
 }
 
 .summary__clear-btn {
@@ -22,6 +24,7 @@
   font-size: inherit;
   background-color: transparent;
   border-color: transparent;
+  border: 0;
 }
 
 .theme--light .c-todo__list {
@@ -30,4 +33,16 @@
 
 .theme--light .c-summary {
   color: var(--clr-lt-text-muted);
+}
+
+@media only screen and (min-width: 768px) {
+  .c-todo__list {
+    margin-bottom: clamp(1rem, 0.19rem + 3.887vw, 3.3rem);
+  }
+
+  .c-summary {
+    font-size: clamp(0.725rem, 0.681rem + 0.211vw, 0.85rem);
+    padding-block: 1.15rem 1rem;
+    padding-inline: clamp(1.25rem, 1.144rem + 0.507vw, 1.55rem);
+  }
 }

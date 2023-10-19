@@ -90,3 +90,9 @@ button {
     background-image: url('./assets/images/bg-desktop-light.jpg');
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .note {
+    font-size: clamp(0.75rem, 0.715rem + 0.169vw, 0.85rem);
+  }
+}
