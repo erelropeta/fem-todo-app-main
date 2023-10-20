@@ -32,9 +32,11 @@
   --clr-lt-surface: #fff;
   --clr-lt-text: var(--clr-lt-grayish-blue-800);
   --clr-lt-text-muted: var(--clr-lt-grayish-blue-400);
+  --clr-lt-btn-hover: var(--clr-lt-grayish-blue-800);
   --clr-dt-surface: var(--clr-dt-dark-blue-400);
   --clr-dt-text: var(--clr-dt-grayish-blue-100);
   --clr-dt-text-muted: var(--clr-dt-grayish-blue-600);
+  --clr-dt-btn-hover: var(--clr-dt-grayish-blue-100);
   --br-sm: 0.25rem;
   color-scheme: light dark;
 }

@@ -6,10 +6,19 @@
   text-transform: capitalize;
   background-color: transparent;
   border-color: transparent;
+  transition: color 0.25s ease-in;
+}
+
+.todo-filter__btn:hover {
+  color: var(--clr-dt-btn-hover);
 }
 
 .theme--light .todo-filter__btn {
   color: var(--clr-lt-text-muted);
+}
+
+.theme--light .todo-filter__btn:hover {
+  color: var(--clr-lt-btn-hover);
 }
 
 .todo-filter__btn.todo-filter__btn--active {

@@ -25,6 +25,11 @@
   background-color: transparent;
   border-color: transparent;
   border: 0;
+  transition: color 0.25s ease-in;
+}
+
+.summary__clear-btn:hover {
+  color: var(--clr-dt-btn-hover);
 }
 
 .theme--light .c-todo__list {
@@ -33,6 +38,10 @@
 
 .theme--light .c-summary {
   color: var(--clr-lt-text-muted);
+}
+
+.theme--light .summary__clear-btn:hover {
+  color: var(--clr-lt-btn-hover);
 }
 
 @media only screen and (min-width: 768px) {
