@@ -8,6 +8,7 @@
   background-color: var(--clr-dt-dark-blue-400);
   border-radius: 0.25rem;
   padding: 0.83rem 1.25rem;
+  box-shadow: 0 1.5rem 70px -15px var(--clr-dt-dark-blue-500);
 }
 
 .newtodo__label::before {

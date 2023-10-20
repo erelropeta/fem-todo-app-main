@@ -2,6 +2,7 @@
   background-color: var(--clr-dt-dark-blue-400);
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+  box-shadow: 0 1.5rem 40px -15px #000;
 }
 
 .todo__list {
