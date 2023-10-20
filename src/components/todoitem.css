@@ -41,7 +41,7 @@
   content: '';
   width: 90%;
   aspect-ratio: 1 / 1;
-  background-color: var(--clr-dt-dark-blue-400);
+  background-color: var(--clr-dt-surface);
   border-radius: 50%;
 }
 
@@ -79,6 +79,13 @@
 
 .theme--light .todo__checkbox--visible {
   border-color: var(--clr-lt-text-muted);
+}
+
+.theme--light
+  .todo__checkbox:not(:checked)
+  + .todo__label:hover
+  .todo__checkbox--visible::before {
+  background-color: var(--clr-lt-surface);
 }
 
 .theme--light .todo__checkbox:checked ~ .todo__label {
