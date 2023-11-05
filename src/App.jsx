@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+
+import { getFilteredTodos } from './utils';
 import Header from './components/Header';
 import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
@@ -50,16 +52,6 @@ function App() {
     .addEventListener('change', (e) =>
       e.matches ? setDarkTheme(true) : setDarkTheme(false)
     );
-
-  const getFilteredTodos = (todos, filter) => {
-    if (filter === 'active') {
-      return todos.filter((todo) => !todo.isComplete);
-    } else if (filter === 'completed') {
-      return todos.filter((todo) => todo.isComplete);
-    } else {
-      return todos;
-    }
-  };
 
   const visibleTodos = getFilteredTodos(todoList, filterBy);
 
