@@ -46,8 +46,10 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
   font-weight: 400;
-  background: var(--clr-dt-dark-blue-500)
-    url('./assets/images/bg-mobile-dark.jpg') no-repeat;
+  background-color: var(--clr-dt-dark-blue-500);
+  background-image: url('./assets/images/bg-mobile-dark.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
   transition: all 500ms ease;
 }
 
@@ -73,8 +75,8 @@ button {
 
 .theme--light {
   color: var(--clr-lt-text);
-  background: var(--clr-lt-bg) url('./assets/images/bg-mobile-light.jpg')
-    no-repeat;
+  background-color: var(--clr-lt-bg);
+  background-image: url('./assets/images/bg-mobile-light.jpg');
 }
 
 .note {
