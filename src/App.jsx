@@ -40,7 +40,6 @@ function App() {
       isComplete: false,
     },
   ]);
-  const [filteredTodos, setFilteredTodos] = useState(todoList);
   const [newTodo, setNewTodo] = useState('');
   const [activeCount, setActiveCount] = useState(todoList.length);
   const [filterBy, setFilterBy] = useState('all');
@@ -51,6 +50,18 @@ function App() {
     .addEventListener('change', (e) =>
       e.matches ? setDarkTheme(true) : setDarkTheme(false)
     );
+
+  const getFilteredTodos = (todos, filter) => {
+    if (filter === 'active') {
+      return todos.filter((todo) => !todo.isComplete);
+    } else if (filter === 'completed') {
+      return todos.filter((todo) => todo.isComplete);
+    } else {
+      return todos;
+    }
+  };
+
+  const visibleTodos = getFilteredTodos(todoList, filterBy);
 
   const handleToggleTheme = () => {
     if (darkTheme) {
@@ -169,18 +180,7 @@ function App() {
   }, [darkTheme]);
 
   useEffect(() => {
-    let filteredTodoList = todoList;
-
-    if (filterBy == 'active') {
-      filteredTodoList = todoList.filter((todo) => !todo.isComplete);
-    }
-
-    if (filterBy == 'completed') {
-      filteredTodoList = todoList.filter((todo) => todo.isComplete);
-    }
-
     setActiveCount(countActive(todoList));
-    setFilteredTodos(filteredTodoList);
   }, [todoList, filterBy]);
 
   return (
@@ -193,7 +193,7 @@ function App() {
           setNewTodo={setNewTodo}
         />
         <TodoList
-          filteredTodos={filteredTodos}
+          visibleTodos={visibleTodos}
           handleStatusChange={handleStatusChange}
           deleteTodo={deleteTodo}
           activeCount={activeCount}

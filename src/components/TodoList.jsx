@@ -4,7 +4,7 @@ import TodoFilter from './TodoFilter';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const TodoList = ({
-  filteredTodos,
+  visibleTodos,
   handleStatusChange,
   deleteTodo,
   activeCount,
@@ -24,7 +24,7 @@ const TodoList = ({
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-              {filteredTodos.map((todo, index) => {
+              {visibleTodos.map((todo, index) => {
                 return (
                   <TodoItem
                     key={todo.id}
