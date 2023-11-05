@@ -93,7 +93,7 @@ function App() {
     const updatedTodoList = filteredTodoList.map((todo, index) => {
       index++;
 
-      return { ...todo, id: index };
+      return { ...todo, id: index.toString() };
     });
 
     localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
