@@ -122,9 +122,15 @@ function App() {
   const handleClearCompleted = () => {
     const activeTodoList = todoList.filter((todo) => !todo.isComplete);
 
-    localStorage.setItem('todolist', JSON.stringify(activeTodoList));
+    const newTodoList = activeTodoList.map((todo, index) => {
+      const id = index + 1;
 
-    setToDoList(activeTodoList);
+      return { ...todo, id: `${id.toString()}` };
+    });
+
+    localStorage.setItem('todolist', JSON.stringify(newTodoList));
+
+    setToDoList(newTodoList);
   };
 
   const reorder = (list, startIndex, endIndex) => {
