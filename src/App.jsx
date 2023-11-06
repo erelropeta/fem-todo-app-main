@@ -10,7 +10,7 @@ function App() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const [darkTheme, setDarkTheme] = useState(prefersDark);
-  const [todoList, setToDoList] = useState([
+  const [todoList, setTodoList] = useState([
     {
       id: '1',
       todo: 'Complete online Javascript course',
@@ -72,7 +72,7 @@ function App() {
   const updateTodoList = (list) => {
     localStorage.setItem('todolist', JSON.stringify(list));
 
-    setToDoList(list);
+    setTodoList(list);
 
     return;
   };
@@ -146,14 +146,14 @@ function App() {
 
     localStorage.setItem('todolist', JSON.stringify(reorderedTodoList));
 
-    setToDoList(reorderedTodoList);
+    setTodoList(reorderedTodoList);
   };
 
   useEffect(() => {
     const localTodoList = localStorage.getItem('todolist');
 
     if (localTodoList) {
-      setToDoList(JSON.parse(localTodoList));
+      setTodoList(JSON.parse(localTodoList));
     } else {
       localStorage.setItem('todolist', JSON.stringify(todoList));
     }
