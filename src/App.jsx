@@ -69,6 +69,14 @@ function App() {
     return activeTodoList.length;
   };
 
+  const updateTodoList = (list) => {
+    localStorage.setItem('todolist', JSON.stringify(list));
+
+    setToDoList(list);
+
+    return;
+  };
+
   const addTodo = (e) => {
     e.preventDefault();
 
@@ -82,9 +90,8 @@ function App() {
       },
     ];
 
-    localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
+    updateTodoList(updatedTodoList);
 
-    setToDoList(updatedTodoList);
     setNewTodo('');
   };
 
@@ -96,9 +103,7 @@ function App() {
       return { ...todo, id: index.toString() };
     });
 
-    localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
-
-    setToDoList(updatedTodoList);
+    updateTodoList(updatedTodoList);
   };
 
   const handleStatusChange = (id) => {
@@ -106,23 +111,19 @@ function App() {
       id == todo.id ? { ...todo, isComplete: !todo.isComplete } : todo
     );
 
-    localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
-
-    setToDoList(updatedTodoList);
+    updateTodoList(updatedTodoList);
   };
 
   const handleClearCompleted = () => {
     const activeTodoList = todoList.filter((todo) => !todo.isComplete);
 
-    const newTodoList = activeTodoList.map((todo, index) => {
+    const updatedTodoList = activeTodoList.map((todo, index) => {
       const id = index + 1;
 
       return { ...todo, id: `${id.toString()}` };
     });
 
-    localStorage.setItem('todolist', JSON.stringify(newTodoList));
-
-    setToDoList(newTodoList);
+    updateTodoList(updatedTodoList);
   };
 
   const reorder = (list, startIndex, endIndex) => {
