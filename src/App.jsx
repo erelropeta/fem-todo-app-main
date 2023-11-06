@@ -47,7 +47,6 @@ function App() {
         ]
   );
   const [newTodo, setNewTodo] = useState('');
-  const [activeCount, setActiveCount] = useState(todoList.length);
   const [filterBy, setFilterBy] = useState('all');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -65,12 +64,6 @@ function App() {
     } else {
       setDarkTheme(true);
     }
-  };
-
-  const countActive = (list) => {
-    const activeTodoList = list.filter((todo) => !todo.isComplete);
-
-    return activeTodoList.length;
   };
 
   const updateTodoList = (list) => {
@@ -154,16 +147,6 @@ function App() {
   };
 
   useEffect(() => {
-    // const localTodoList = localStorage.getItem('todolist');
-
-    // console.log(localTodoList);
-
-    // if (localTodoList) {
-    //   setTodoList(JSON.parse(localTodoList));
-    // } else {
-    //   localStorage.setItem('todolist', JSON.stringify(todoList));
-    // }
-
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };
@@ -184,10 +167,6 @@ function App() {
     document.body.className = bodyClassName;
   }, [darkTheme]);
 
-  useEffect(() => {
-    setActiveCount(countActive(todoList));
-  }, [todoList, filterBy]);
-
   return (
     <div className="app">
       <Header darkTheme={darkTheme} handleToggleTheme={handleToggleTheme} />
@@ -202,7 +181,6 @@ function App() {
           visibleTodos={visibleTodos}
           handleStatusChange={handleStatusChange}
           deleteTodo={deleteTodo}
-          activeCount={activeCount}
           handleClearCompleted={handleClearCompleted}
           filterBy={filterBy}
           setFilterBy={setFilterBy}

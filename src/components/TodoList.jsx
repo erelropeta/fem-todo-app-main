@@ -1,19 +1,25 @@
 import './todolist.css';
+
+import { getFilteredTodos } from '../utils';
+
 import TodoItem from './TodoItem';
 import TodoFilter from './TodoFilter';
+
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const TodoList = ({
+  todoList,
   visibleTodos,
   handleStatusChange,
   deleteTodo,
-  activeCount,
   handleClearCompleted,
   filterBy,
   setFilterBy,
   handleDragEnd,
   windowWidth,
 }) => {
+  const activeCount = getFilteredTodos(todoList, 'active').length;
+
   return (
     <section className="c-todo__list">
       <DragDropContext onDragEnd={handleDragEnd}>
