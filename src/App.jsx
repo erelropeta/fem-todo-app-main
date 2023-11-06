@@ -10,38 +10,42 @@ function App() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const [darkTheme, setDarkTheme] = useState(prefersDark);
-  const [todoList, setTodoList] = useState([
-    {
-      id: '1',
-      todo: 'Complete online Javascript course',
-      isComplete: true,
-    },
-    {
-      id: '2',
-      todo: 'Jog around the park 3x',
-      isComplete: false,
-    },
-    {
-      id: '3',
-      todo: '10 minutes meditation',
-      isComplete: false,
-    },
-    {
-      id: '4',
-      todo: 'Read for 1 hour',
-      isComplete: false,
-    },
-    {
-      id: '5',
-      todo: 'Pick up groceries',
-      isComplete: false,
-    },
-    {
-      id: '6',
-      todo: 'Complete Todo App on Frontend Mentor',
-      isComplete: false,
-    },
-  ]);
+  const [todoList, setTodoList] = useState(
+    localStorage.getItem('todolist')
+      ? JSON.parse(localStorage.getItem('todolist'))
+      : [
+          {
+            id: '1',
+            todo: 'Complete online Javascript course',
+            isComplete: true,
+          },
+          {
+            id: '2',
+            todo: 'Jog around the park 3x',
+            isComplete: false,
+          },
+          {
+            id: '3',
+            todo: '10 minutes meditation',
+            isComplete: false,
+          },
+          {
+            id: '4',
+            todo: 'Read for 1 hour',
+            isComplete: false,
+          },
+          {
+            id: '5',
+            todo: 'Pick up groceries',
+            isComplete: false,
+          },
+          {
+            id: '6',
+            todo: 'Complete Todo App on Frontend Mentor',
+            isComplete: false,
+          },
+        ]
+  );
   const [newTodo, setNewTodo] = useState('');
   const [activeCount, setActiveCount] = useState(todoList.length);
   const [filterBy, setFilterBy] = useState('all');
@@ -150,13 +154,15 @@ function App() {
   };
 
   useEffect(() => {
-    const localTodoList = localStorage.getItem('todolist');
+    // const localTodoList = localStorage.getItem('todolist');
 
-    if (localTodoList) {
-      setTodoList(JSON.parse(localTodoList));
-    } else {
-      localStorage.setItem('todolist', JSON.stringify(todoList));
-    }
+    // console.log(localTodoList);
+
+    // if (localTodoList) {
+    //   setTodoList(JSON.parse(localTodoList));
+    // } else {
+    //   localStorage.setItem('todolist', JSON.stringify(todoList));
+    // }
 
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -192,6 +198,7 @@ function App() {
           setNewTodo={setNewTodo}
         />
         <TodoList
+          todoList={todoList}
           visibleTodos={visibleTodos}
           handleStatusChange={handleStatusChange}
           deleteTodo={deleteTodo}
