@@ -13,8 +13,6 @@ const TodoList = ({
   handleStatusChange,
   deleteTodo,
   handleClearCompleted,
-  filterBy,
-  setFilterBy,
   handleDragEnd,
   windowWidth,
 }) => {
@@ -48,9 +46,7 @@ const TodoList = ({
       </DragDropContext>
       <div className="c-summary">
         <p className="summary">{activeCount} items left</p>
-        {windowWidth >= 768 && (
-          <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-        )}
+        {windowWidth >= 768 && <TodoFilter />}
         <button className="summary__clear-btn" onClick={handleClearCompleted}>
           Clear Completed
         </button>

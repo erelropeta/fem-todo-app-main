@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { getFilteredTodos } from './utils';
 import Header from './components/Header';
 import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
 import TodoFilter from './components/TodoFilter';
+
+export const FilterContext = createContext('all');
 
 function App() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -176,20 +178,18 @@ function App() {
           newTodo={newTodo}
           setNewTodo={setNewTodo}
         />
-        <TodoList
-          todoList={todoList}
-          visibleTodos={visibleTodos}
-          handleStatusChange={handleStatusChange}
-          deleteTodo={deleteTodo}
-          handleClearCompleted={handleClearCompleted}
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-          handleDragEnd={handleDragEnd}
-          windowWidth={windowWidth}
-        />
-        {windowWidth < 768 && (
-          <TodoFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-        )}
+        <FilterContext.Provider value={{ filterBy, setFilterBy }}>
+          <TodoList
+            todoList={todoList}
+            visibleTodos={visibleTodos}
+            handleStatusChange={handleStatusChange}
+            deleteTodo={deleteTodo}
+            handleClearCompleted={handleClearCompleted}
+            handleDragEnd={handleDragEnd}
+            windowWidth={windowWidth}
+          />
+          {windowWidth < 768 && <TodoFilter />}
+        </FilterContext.Provider>
         <p className="note">Drag and drop to reorder list</p>
       </main>
     </div>

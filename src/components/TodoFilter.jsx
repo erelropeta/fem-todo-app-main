@@ -2,19 +2,12 @@ import './todofilter.css';
 
 import TodoFilterBtn from './TodoFilterBtn';
 
-const TodoFilter = ({ filterBy, setFilterBy }) => {
-  const filters = ['all', 'active', 'completed'];
-
+const TodoFilter = () => {
   return (
     <div className="todo-filter">
-      {filters.map((filter, index) => (
-        <TodoFilterBtn
-          key={index}
-          filter={filter}
-          filterBy={filterBy}
-          setFilterBy={setFilterBy}
-        />
-      ))}
+      <TodoFilterBtn filter={'all'} />
+      <TodoFilterBtn filter={'active'} />
+      <TodoFilterBtn filter={'completed'} />
     </div>
   );
 };

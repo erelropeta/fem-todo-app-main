@@ -1,6 +1,12 @@
+import { useContext } from 'react';
+
 import './todofilterbtn.css';
 
-const TodoFilterBtn = ({ filter, filterBy, setFilterBy }) => {
+import { FilterContext } from '../App';
+
+const TodoFilterBtn = ({ filter }) => {
+  const { filterBy, setFilterBy } = useContext(FilterContext);
+
   let btnClassName = 'todo-filter__btn';
 
   if (filter == filterBy) {
