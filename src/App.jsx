@@ -6,6 +6,39 @@ import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
 import TodoFilter from './components/TodoFilter';
 
+export const TodoListContext = createContext([
+  {
+    id: '1',
+    todo: 'Complete online Javascript course',
+    isComplete: true,
+  },
+  {
+    id: '2',
+    todo: 'Jog around the park 3x',
+    isComplete: false,
+  },
+  {
+    id: '3',
+    todo: '10 minutes meditation',
+    isComplete: false,
+  },
+  {
+    id: '4',
+    todo: 'Read for 1 hour',
+    isComplete: false,
+  },
+  {
+    id: '5',
+    todo: 'Pick up groceries',
+    isComplete: false,
+  },
+  {
+    id: '6',
+    todo: 'Complete Todo App on Frontend Mentor',
+    isComplete: false,
+  },
+]);
+export const UpdateTodoListContext = createContext(null);
 export const FilterContext = createContext('all');
 
 function App() {
@@ -94,25 +127,6 @@ function App() {
     setNewTodo('');
   };
 
-  const deleteTodo = (id) => {
-    const filteredTodoList = todoList.filter((todo) => id !== todo.id);
-    const updatedTodoList = filteredTodoList.map((todo, index) => {
-      index++;
-
-      return { ...todo, id: index.toString() };
-    });
-
-    updateTodoList(updatedTodoList);
-  };
-
-  const handleStatusChange = (id) => {
-    const updatedTodoList = todoList.map((todo) =>
-      id == todo.id ? { ...todo, isComplete: !todo.isComplete } : todo
-    );
-
-    updateTodoList(updatedTodoList);
-  };
-
   const handleClearCompleted = () => {
     const activeTodoList = todoList.filter((todo) => !todo.isComplete);
 
@@ -172,26 +186,28 @@ function App() {
   return (
     <div className="app">
       <Header darkTheme={darkTheme} handleToggleTheme={handleToggleTheme} />
-      <main className="main">
-        <NewTodoForm
-          addTodo={addTodo}
-          newTodo={newTodo}
-          setNewTodo={setNewTodo}
-        />
-        <FilterContext.Provider value={{ filterBy, setFilterBy }}>
-          <TodoList
-            todoList={todoList}
-            visibleTodos={visibleTodos}
-            handleStatusChange={handleStatusChange}
-            deleteTodo={deleteTodo}
-            handleClearCompleted={handleClearCompleted}
-            handleDragEnd={handleDragEnd}
-            windowWidth={windowWidth}
-          />
-          {windowWidth < 768 && <TodoFilter />}
-        </FilterContext.Provider>
-        <p className="note">Drag and drop to reorder list</p>
-      </main>
+      <TodoListContext.Provider value={todoList}>
+        <UpdateTodoListContext.Provider value={updateTodoList}>
+          <main className="main">
+            <NewTodoForm
+              addTodo={addTodo}
+              newTodo={newTodo}
+              setNewTodo={setNewTodo}
+            />
+            <FilterContext.Provider value={{ filterBy, setFilterBy }}>
+              <TodoList
+                todoList={todoList}
+                visibleTodos={visibleTodos}
+                handleClearCompleted={handleClearCompleted}
+                handleDragEnd={handleDragEnd}
+                windowWidth={windowWidth}
+              />
+              {windowWidth < 768 && <TodoFilter />}
+            </FilterContext.Provider>
+            <p className="note">Drag and drop to reorder list</p>
+          </main>
+        </UpdateTodoListContext.Provider>
+      </TodoListContext.Provider>
     </div>
   );
 }

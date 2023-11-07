@@ -1,17 +1,14 @@
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+
 import './todolist.css';
 
 import { getFilteredTodos } from '../utils';
-
 import TodoItem from './TodoItem';
 import TodoFilter from './TodoFilter';
-
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const TodoList = ({
   todoList,
   visibleTodos,
-  handleStatusChange,
-  deleteTodo,
   handleClearCompleted,
   handleDragEnd,
   windowWidth,
@@ -29,15 +26,7 @@ const TodoList = ({
               {...provided.droppableProps}
             >
               {visibleTodos.map((todo, index) => {
-                return (
-                  <TodoItem
-                    key={todo.id}
-                    index={index}
-                    {...todo}
-                    handleStatusChange={handleStatusChange}
-                    deleteTodo={deleteTodo}
-                  />
-                );
+                return <TodoItem key={todo.id} index={index} {...todo} />;
               })}
               {provided.placeholder}
             </ul>

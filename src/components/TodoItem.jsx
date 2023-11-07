@@ -1,16 +1,35 @@
+import { useContext } from 'react';
+import { Draggable } from 'react-beautiful-dnd';
+
 import './todoitem.css';
 import CheckIcon from '../assets/images/icon-check.svg';
 import CrossIcon from '../assets/images/icon-cross.svg';
-import { Draggable } from 'react-beautiful-dnd';
 
-const TodoItem = ({
-  index,
-  id,
-  todo,
-  isComplete,
-  handleStatusChange,
-  deleteTodo,
-}) => {
+import { TodoListContext, UpdateTodoListContext } from '../App';
+
+const TodoItem = ({ index, id, todo, isComplete }) => {
+  const todoList = useContext(TodoListContext);
+  const updateTodoList = useContext(UpdateTodoListContext);
+
+  const handleStatusChange = (id) => {
+    const updatedTodoList = todoList.map((todo) =>
+      id == todo.id ? { ...todo, isComplete: !todo.isComplete } : todo
+    );
+
+    updateTodoList(updatedTodoList);
+  };
+
+  const handleDeleteTodo = (id) => {
+    const filteredTodoList = todoList.filter((todo) => id !== todo.id);
+    const updatedTodoList = filteredTodoList.map((todo, index) => {
+      index++;
+
+      return { ...todo, id: index.toString() };
+    });
+
+    updateTodoList(updatedTodoList);
+  };
+
   return (
     <Draggable index={index} draggableId={id}>
       {(provided) => (
@@ -39,7 +58,7 @@ const TodoItem = ({
             type="image"
             src={CrossIcon}
             alt="Delete"
-            onClick={() => deleteTodo(id)}
+            onClick={() => handleDeleteTodo(id)}
           />
         </li>
       )}
